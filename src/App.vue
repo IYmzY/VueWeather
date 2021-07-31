@@ -12,11 +12,11 @@
       </div>
       <div class="weather-wrap">
         <div class="location-box">
-          <div class="location">Northamption, UK</div>
-          <div class="date">Monday 20 january 2021</div>
+          <div class="location">Paris, france</div>
+          <div class="date">sunday 31 july 2021</div>
         </div>
         <div class="weather-box">
-          <div class="temperature">9°c</div>
+          <div class="temperature">21°c</div>
           <div class="weather">Rain</div>
         </div>
       </div>
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       api_key: "452c6ecd93ac4727195d01a0fd56a54a",
+      url_base:
     };
   },
 };
@@ -119,5 +120,42 @@ main {
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 16px 0px 16px 0px;
+}
+.location-box .location {
+  color: #fff;
+  font-size: 6vh;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 1px 3px rgba(0, 0, 0, 0.25);
+}
+.location-box .date {
+  color: #fff;
+  font-size: 2vh;
+  font-weight: 300;
+  text-align: center;
+  font-style: italic;
+}
+.weather-box {
+  text-align: center;
+}
+.weather-box .temperature {
+  display: inline-block;
+  padding: 10px 25px;
+  color: #fff;
+  font-size: 10vh;
+  font-weight: 900;
+  text-shadow: 3px 6px rgba(0, 0, 0, 0.45);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  margin: 2% 0;
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.45);
+}
+.weather-box .weather {
+  color: #fff;
+  font-size: 5vh;
+  font-weight: 500;
+  font-style: italic;
+  text-shadow: 3px 6px rgba(0, 0, 0, 0.45);
+  margin: -0.5% 0;
 }
 </style>
