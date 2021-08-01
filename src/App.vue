@@ -1,5 +1,10 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    :class="
+      typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''
+    "
+  >
     <main>
       <div class="search-box">
         <input
@@ -21,7 +26,7 @@
         </div>
         <div class="weather-box">
           <div class="temperature">{{ Math.round(weather.main.temp) }}°c</div>
-          <div class="weather">{{ weather.weather[0].main }}</div>
+          <div class="weather">{{ weather.weather.main }}</div>
         </div>
       </div>
     </main>
@@ -84,7 +89,7 @@ export default {
       let date = d.getDate();
       let month = months[d.getMonth()];
       let year = d.getFullYear();
-      return `${day} ${date} ${month} ${year} `;
+      return `${day} ${date} ${month} ${year}`;
     },
   },
 };
@@ -116,6 +121,9 @@ body {
   -moz-animation: appEaseIn var(--duration) ease-in forwards;
   -webkit-animation: appEaseIn var(--duration) ease-in forwards;
   animation: appEaseIn var(--duration) ease-in forwards;
+}
+#app.warm {
+  background-image: url("./assets/warm-bg.jpg");
 }
 @keyframes appEaseIn {
   0% {
