@@ -8,11 +8,15 @@
           id=""
           class="search-bar"
           placeholder="Search..."
+          v-model="query"
+          v-on:keypress="fetchWeather"
         />
       </div>
-      <div class="weather-wrap">
+      <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
         <div class="location-box">
-          <div class="location">Paris, france</div>
+          <div class="location">
+            {{ weather.name }},{{ weather.sys.country }}
+          </div>
           <div class="date">sunday 31 july 2021</div>
         </div>
         <div class="weather-box">
@@ -30,8 +34,26 @@ export default {
   data() {
     return {
       api_key: "452c6ecd93ac4727195d01a0fd56a54a",
-      url_base:
+      url_base: "https://api.openweathermap.org/data/2.5/",
+      query: "",
+      weather: {},
     };
+  },
+  methods: {
+    fetchWeather(e) {
+      if (e.key == "Enter") {
+        fetch(
+          `${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`
+        )
+          .then((result) => {
+            return result.json();
+          })
+          .then(this.setResults);
+      }
+    },
+    setResults(results) {
+      this.weather = results;
+    },
   },
 };
 </script>
